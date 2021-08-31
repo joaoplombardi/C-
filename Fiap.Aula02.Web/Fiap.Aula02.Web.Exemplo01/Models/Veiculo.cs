@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,10 +8,17 @@ namespace Fiap.Aula02.Web.Exemplo01.Models
 {
     public class Veiculo
     {
+        public int ID { get; set; }
+
         public string Modelo { get; set; }
         public int Ano { get; set; }
+
+        [Display(Name = "Automático")]
         public bool Automatico { get; set; }
         public decimal Valor { get; set; }
+
+        [DataType(DataType.Date), Display(Name ="Data de Cadastro")]
+        public DateTime DataCompra { get; set; }
     }
 }
 
