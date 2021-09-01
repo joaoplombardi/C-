@@ -8,27 +8,45 @@
 <div class="text-right">
     <a asp-action="cadastrar" class="btn btn-outline-dark mb-2">Cadastrar</a>
 </div>
-<table class="table">
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+<table class="table table-striped">
 
     <tr>
         <th> ID </th>
         <th> Modelo </th>
         <th> Ano </th>
         <th> Valor </th>
+        <th> Cor </th>
         <th> Automatico </th>
+        <th> Combustível </th>
         <th> Data de Compra </th>
+        <th></th>
+        <th></th>
     </tr>
     @foreach (var item in Model)
-     {
-            <tr>
-                <td>@item.ID </td>
-                <td>@item.Modelo  </td>
-                <td>@item.Ano  </td>
-                <td>@item.Valor  </td>
-                <td>@item.Automatico  </td>
-                <td>@item.DataCompra  </td>
-            </tr>
-     }
+    {
+        <tr>
+            <td>@item.ID </td>
+            <td>@item.Modelo  </td>
+            <td>@item.Ano  </td>
+            <td>@item.Valor.ToString("N")</td>
+            <td>@item.Cor</td>
+            <td>@(item.Automatico?"Sim":"Não")  </td>
+            <td>@item.Combustivel  </td>
+            <td>@item.DataCompra.ToShortDateString()  </td>
+            <td>
+                <a asp-action="editar" asp-route-id="@item.ID" class="btn btn-info btn-sm">Editar</a>
+            </td>
+            <td>
+                <a asp-action="excluir" asp-route-id="@item.ID" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+    }
 </table>
 
 

@@ -19,9 +19,16 @@ namespace Fiap.Aula02.Web.Exemplo01.Models
 
         [DataType(DataType.Date), Display(Name ="Data de Cadastro")]
         public DateTime DataCompra { get; set; }
+        public Combustivel Combustivel { get; set; }
+
+        public string Cor { get; set; }
     }
 }
 
+    public enum Combustivel
+    {
+        Etanol, Gasolina, Flex, Diesel, Eletrico, Hibrido
+    } 
 /** Criar uma página para cadastrar o Veiculo (utilizando tag helpers)
  *  "Cadastrar" o veiculo em uma lista na controller
  *      private static IList<Veiculo> _banco;
